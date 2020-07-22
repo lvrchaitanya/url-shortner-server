@@ -3,11 +3,11 @@ const mongoose  = require("mongoose");
 const app= express();
 const bodyParser =require("body-parser");
 const shortid =require ("shortid");
-
+var cors = require('cors')
 app.use(bodyParser.urlencoded({extended:true}));
 
 mongoose.connect( process.env.MONGODB_URI || "mongodb://localhost:27017/url-shortner",{ useNewUrlParser: true, useUnifiedTopology: true });
-
+app.use(cors());
 const linkSchema ={
     old: String,
     new : String,
